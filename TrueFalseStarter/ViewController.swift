@@ -43,6 +43,73 @@ class ViewController: UIViewController {
     }
 //end of didRecieveMemory
     
+
+//function to generate a random numebr and use it as the index for the array of questions and displays a random question
+func displayQuestion() {
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: allQuestions.count)
+        let questionToDisplay = allQuestions[indexOfSelectedQuestion]
+        questionField.text = questionToDisplay.question
+        playAgainButton.isHidden = true
+    }
+//end displayQuestion
+    
+    
+//Checking the answer-button against the answer to the question
+    @IBAction func checkAnswer(_ sender: UIButton) {
+        // Increment the questions asked counter
+        questionsAsked += 1
+        
+        let selectedQuestionDict = allQuestions[indexOfSelectedQuestion]
+        let correctAnswer = selectedQuestionDict.answer
+        
+        if (sender === buttonOne &&  correctAnswer == "Button One")
+            || (sender === buttonTwo && correctAnswer == "Button Two")
+            || (sender === buttonThree &&  correctAnswer == "Button Three")
+            || (sender === buttonFour &&  correctAnswer == "Button Four"){
+            correctQuestions += 1
+            questionField.text = "Correct!"
+            
+            loadNextRoundWithDelay(seconds: 1)
+            
+        } else {
+            
+            questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.answer)"
+            
+            loadNextRoundWithDelay(seconds: 2)
+        }
+        
+        
+    }
+//End of checkAnswer
+    
+    
+//function to determine if the game is over and if so to start a new game
+    func nextRound() {
+        if questionsAsked == questionsPerRound {
+            // Game is over
+            displayScore()
+        } else {
+            // Continue game
+            displayQuestion()
+        }
+    }
+//end nextRound
+    
+    
+    // MARK: Helper Methods
+//function to delay the appearance of the next question after one is answered for 1 second
+    func loadNextRoundWithDelay(seconds: Int) {
+        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
+        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
+        // Calculates a time value to execute the method given current time and delay
+        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
+        
+        // Executes the nextRound method at the dispatch time on the main queue
+        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
+            self.nextRound()
+        }
+    }
+//end loadNextRoundWithDelay
     
     
 //When the score is displayed the buttons should be hidden
@@ -59,57 +126,11 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
-//end of dispalyScore
-    
-    
-//Checking the answer-button against the answer to the question
-    @IBAction func checkAnswer(_ sender: UIButton) {
-        // Increment the questions asked counter
-        questionsAsked += 1
-        
-        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
-        
-        if (sender === buttonOne &&  correctAnswer == "Button One")
-            || (sender === buttonTwo && correctAnswer == "Button Two")
-            || (sender === buttonThree &&  correctAnswer == "Button Three")
-            || (sender === buttonFour &&  correctAnswer == "Button Four"){
-            correctQuestions += 1
-            questionField.text = "Correct!"
-        } else {
-            questionField.text = "Sorry, wrong answer!"
-        }
-        
-        loadNextRoundWithDelay(seconds: 2)
-    }
-//End of checkAnswer
-    
-  
-//function to generate a random numebr and use it as the index for the array of questions and displays a random question
-    func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
-        playAgainButton.isHidden = true
-    }
-//end dispalyQuestion
-    
-    
-//function to determine if the game is over and if so to start a new game
-    func nextRound() {
-        if questionsAsked == questionsPerRound {
-            // Game is over
-            displayScore()
-        } else {
-            // Continue game
-            displayQuestion()
-        }
-    }
-//end nextRound
+//end of displayScore
     
     
 //When the 'Play Again' button is displayed and tapped the answer buttons reappear and the questionsAsked and correctQuestions variables are reset to 0
-    @IBAction func playAgain() {
+@IBAction func playAgain() {
         // Show the answer buttons
         buttonOne.isHidden = false
         buttonTwo.isHidden = false
@@ -121,25 +142,6 @@ class ViewController: UIViewController {
         nextRound()
     }
 //end palyAgain
-    
-    
-    
-    // MARK: Helper Methods
-    
-
-//function to delay the appearance of the next question after one is answered for 2 seconds
-    func loadNextRoundWithDelay(seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        
-        // Executes the nextRound method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            self.nextRound()
-        }
-    }
-//end loadNextRoundWithDelay
     
 }
 //End View Controller
