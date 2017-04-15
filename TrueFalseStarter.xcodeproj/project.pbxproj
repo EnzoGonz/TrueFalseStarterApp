@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BC3189D1EA22E200048C4EA /* QuizQuestionsandMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC3189C1EA22E200048C4EA /* QuizQuestionsandMethods.swift */; };
+		0BC3189F1EA22EF70048C4EA /* QuizSoundsandMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC3189E1EA22EF70048C4EA /* QuizSoundsandMethods.swift */; };
 		97093D3C1C913506001275BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3B1C913506001275BC /* AppDelegate.swift */; };
 		97093D3E1C913506001275BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3D1C913506001275BC /* ViewController.swift */; };
 		97093D411C913506001275BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D3F1C913506001275BC /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0BC3189C1EA22E200048C4EA /* QuizQuestionsandMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizQuestionsandMethods.swift; sourceTree = "<group>"; };
+		0BC3189E1EA22EF70048C4EA /* QuizSoundsandMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSoundsandMethods.swift; sourceTree = "<group>"; };
 		97093D381C913506001275BC /* TrueFalseStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrueFalseStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97093D3B1C913506001275BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97093D3D1C913506001275BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,12 +62,13 @@
 			children = (
 				97093D3B1C913506001275BC /* AppDelegate.swift */,
 				97093D3D1C913506001275BC /* ViewController.swift */,
+				0BC3189E1EA22EF70048C4EA /* QuizSoundsandMethods.swift */,
+				0BC3189C1EA22E200048C4EA /* QuizQuestionsandMethods.swift */,
 				97093D3F1C913506001275BC /* Main.storyboard */,
 				97093D421C913506001275BC /* Assets.xcassets */,
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
 				97093D471C913506001275BC /* Info.plist */,
 				97093D521C932116001275BC /* GameSound.wav */,
-				0BC3189C1EA22E200048C4EA /* QuizQuestionsandMethods.swift */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97093D3E1C913506001275BC /* ViewController.swift in Sources */,
+				0BC3189F1EA22EF70048C4EA /* QuizSoundsandMethods.swift in Sources */,
 				97093D3C1C913506001275BC /* AppDelegate.swift in Sources */,
 				0BC3189D1EA22E200048C4EA /* QuizQuestionsandMethods.swift in Sources */,
 			);

@@ -8,63 +8,44 @@
 
 import UIKit
 import GameKit
-import AudioToolbox
+
+
 
 class ViewController: UIViewController {
     
-    let questionsPerRound = 4
-    var questionsAsked = 0
-    var correctQuestions = 0
-    var indexOfSelectedQuestion: Int = 0
-    
-    var gameSound: SystemSoundID = 0
-    
-    let trivia: [[String : String]] = [
-        ["Question": "The answer is Button One", "Answer": "Button One"],
-        ["Question": "The answer is Button Two", "Answer": "Button Two"],
-        ["Question": "The answer is Button Three", "Answer": "Button Three"],
-        ["Question": "The answer is Button Four", "Answer": "Button Four"]
-    ]
-    
+//Outlets to storyboard
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var buttonOne: UIButton!
     @IBOutlet weak var buttonTwo: UIButton!
     @IBOutlet weak var buttonThree: UIButton!
     @IBOutlet weak var buttonFour: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
-    
+//End of outlets
 
+    
+//To determine what code runs as the view loads- the first dispaly
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    //First usage of QuizSounds
         loadGameStartSound()
         // Start game
         playGameStartSound()
         displayQuestion()
     }
-
+// end of view did load
     
     
-    
+//For memory not relating to project
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//end of didRecieveMemory
     
     
     
-    
-    
-    func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
-        playAgainButton.isHidden = true
-    }
-    
-    
-    
-    
-    
+//When the score is displayed the buttons should be hidden
     func displayScore() {
         // Hide the answer buttons
         buttonOne.isHidden = true
@@ -78,11 +59,10 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
+//end of dispalyScore
     
     
-    
-    
-    
+//Checking the answer-button against the answer to the question
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
@@ -102,11 +82,20 @@ class ViewController: UIViewController {
         
         loadNextRoundWithDelay(seconds: 2)
     }
+//End of checkAnswer
+    
+  
+//function to generate a random numebr and use it as the index for the array of questions and displays a random question
+    func displayQuestion() {
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+        let questionDictionary = trivia[indexOfSelectedQuestion]
+        questionField.text = questionDictionary["Question"]
+        playAgainButton.isHidden = true
+    }
+//end dispalyQuestion
     
     
-    
-    
-    
+//function to determine if the game is over and if so to start a new game
     func nextRound() {
         if questionsAsked == questionsPerRound {
             // Game is over
@@ -116,10 +105,10 @@ class ViewController: UIViewController {
             displayQuestion()
         }
     }
+//end nextRound
     
     
-    
-    
+//When the 'Play Again' button is displayed and tapped the answer buttons reappear and the questionsAsked and correctQuestions variables are reset to 0
     @IBAction func playAgain() {
         // Show the answer buttons
         buttonOne.isHidden = false
@@ -131,14 +120,14 @@ class ViewController: UIViewController {
         correctQuestions = 0
         nextRound()
     }
+//end palyAgain
     
     
-    
-    
-
     
     // MARK: Helper Methods
     
+
+//function to delay the appearance of the next question after one is answered for 2 seconds
     func loadNextRoundWithDelay(seconds: Int) {
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
@@ -150,21 +139,7 @@ class ViewController: UIViewController {
             self.nextRound()
         }
     }
+//end loadNextRoundWithDelay
     
-    
-    
-    
-    func loadGameStartSound() {
-        let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
-        let soundURL = URL(fileURLWithPath: pathToSoundFile!)
-        AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
-    }
-    
-    
-    
-    
-    func playGameStartSound() {
-        AudioServicesPlaySystemSound(gameSound)
-    }
 }
-
+//End View Controller
