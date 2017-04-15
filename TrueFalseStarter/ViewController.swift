@@ -40,10 +40,17 @@ class ViewController: UIViewController {
         displayQuestion()
     }
 
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
     
     func displayQuestion() {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
@@ -51,6 +58,10 @@ class ViewController: UIViewController {
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
     }
+    
+    
+    
+    
     
     func displayScore() {
         // Hide the answer buttons
@@ -63,6 +74,10 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         
     }
+    
+    
+    
+    
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
@@ -81,6 +96,10 @@ class ViewController: UIViewController {
         loadNextRoundWithDelay(seconds: 2)
     }
     
+    
+    
+    
+    
     func nextRound() {
         if questionsAsked == questionsPerRound {
             // Game is over
@@ -91,6 +110,9 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    
+    
     @IBAction func playAgain() {
         // Show the answer buttons
         trueButton.isHidden = false
@@ -100,6 +122,9 @@ class ViewController: UIViewController {
         correctQuestions = 0
         nextRound()
     }
+    
+    
+    
     
 
     
@@ -117,11 +142,17 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    
+    
     func loadGameStartSound() {
         let pathToSoundFile = Bundle.main.path(forResource: "GameSound", ofType: "wav")
         let soundURL = URL(fileURLWithPath: pathToSoundFile!)
         AudioServicesCreateSystemSoundID(soundURL as CFURL, &gameSound)
     }
+    
+    
+    
     
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
