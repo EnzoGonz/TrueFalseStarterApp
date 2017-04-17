@@ -13,6 +13,7 @@ import GameKit
 
 class ViewController: UIViewController {
     
+    
 //Outlets to storyboard
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var buttonOne: UIButton!
@@ -20,6 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonThree: UIButton!
     @IBOutlet weak var buttonFour: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    @IBOutlet weak var countdownTimer: UILabel!
 //End of outlets
 
     
@@ -65,6 +68,17 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         
+        buttonOne.isEnabled = true
+        buttonTwo.isEnabled = true
+        buttonThree.isEnabled = true
+        buttonFour.isEnabled = true
+        
+        if questionsAsked != (questionsPerRound - 1) {
+            nextQuestionButton.setTitle("NEXT QUESTION", for: UIControlState.normal)
+        } else { nextQuestionButton.setTitle("VIEW SCORE", for: UIControlState.normal)
+        }//end if statement
+        nextQuestionButton.isHidden = true
+        
         var shouldDisplayQuestion = false
     
         while shouldDisplayQuestion == false{
@@ -92,6 +106,7 @@ class ViewController: UIViewController {
                 buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
                 
                 
+                nextQuestionButton.isHidden = true
                 playAgainButton.isHidden = true
                 shouldDisplayQuestion = true
             }//if thisNumebrHasBeenUSed end
@@ -106,7 +121,7 @@ class ViewController: UIViewController {
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     
     
-//Checking the answer-button against the answer to the question
+//Checking the answer-button against the answer to the question to determine if correct or incorrect
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Increment the questions asked counter
         questionsAsked += 1
@@ -114,32 +129,45 @@ class ViewController: UIViewController {
         let selectedQuestionDict = allQuestions[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict.correctAnswer
         
+        //if correct then
         if (sender === buttonOne &&  correctAnswer == selectedQuestionDict.answer1)
             || (sender === buttonTwo && correctAnswer == selectedQuestionDict.answer2)
             || (sender === buttonThree &&  correctAnswer == selectedQuestionDict.answer3)
             || (sender === buttonFour &&  correctAnswer == selectedQuestionDict.answer4){
             correctQuestions += 1
             
+            //correct answer prompts a random correctAnswer sound to play
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Correct"), soundType: "wav")
             playGameSound()
     
             questionField.text = "Correct!"
             
-            loadNextRoundWithDelay(seconds: 1)
+            buttonOne.isEnabled = false
+            buttonTwo.isEnabled = false
+            buttonThree.isEnabled = false
+            buttonFour.isEnabled = false
+
+            nextQuestionButton.isHidden = false
             
-        } else {
+        } else {//if incorrect then
             
+            //incorrect answer prompts a random incorrect answer to play
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
             playGameSound()
             
             questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
-            loadNextRoundWithDelay(seconds: 2)
-        }
+            buttonOne.isEnabled = false
+            buttonTwo.isEnabled = false
+            buttonThree.isEnabled = false
+            buttonFour.isEnabled = false
+            
+            nextQuestionButton.isHidden = false
+            
+        }//end if sender === statement
         
         
-    }
-//End of checkAnswer
+    }//End of checkAnswer
     
     
 //function to determine if the game is over and if so to start a new game
@@ -155,20 +183,14 @@ class ViewController: UIViewController {
 //end nextRound
     
     
-    // MARK: Helper Methods
-//function to delay the appearance of the next question after one is answered for 1 second
-    func loadNextRoundWithDelay(seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        
-        // Executes the nextRound method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            self.nextRound()
-        }
-    }
-//end loadNextRoundWithDelay
+    
+//nextQuestionButton is tapped to proceed to the next question
+    @IBAction func nextQuestionAction(_ sender: UIButton) {
+        nextRound()
+    }//end button func
+    
+    
+    
     
     
 //When the score is displayed the buttons should be hidden
@@ -178,14 +200,17 @@ class ViewController: UIViewController {
         buttonTwo.isHidden = true
         buttonThree.isHidden = true
         buttonFour.isHidden = true
+        nextQuestionButton.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
         
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
-    }
-//end of displayScore
+        if Double(correctQuestions) >= (Double(questionsPerRound) * 0.7){
+            questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        } else {
+            questionField.text = "Too Bad!\nYou only got \(correctQuestions) out of \(questionsPerRound) correct.\nBetter Luck Next Time!"
+        }//end of if statement
+    }//end of displayScore
     
     
 //When the 'Play Again' button is displayed and tapped the answer buttons reappear and the questionsAsked and correctQuestions variables are reset to 0
@@ -195,6 +220,7 @@ class ViewController: UIViewController {
         buttonTwo.isHidden = false
         buttonThree.isHidden = false
         buttonFour.isHidden = false
+        nextQuestionButton.isHidden = true
         
         questionsAsked = 0
         correctQuestions = 0
