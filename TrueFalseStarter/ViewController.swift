@@ -42,16 +42,61 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 //end of didRecieveMemory
+   
+
+    
+    
+    
+    
+    
+//////////////////////////////////////////////////////////////////////////////////////////////
+    // Generatign a random number to use as the index of allQuestions - for random question to display. Also verifyign that the question has not been displayed before, and if it has generating a new random number
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     
 
-//function to generate a random numebr and use it as the index for the array of questions and displays a random question
-func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: allQuestions.count)
-        let questionToDisplay = allQuestions[indexOfSelectedQuestion]
-        questionField.text = questionToDisplay.question
-        playAgainButton.isHidden = true
-    }
-//end displayQuestion
+//vars and constants to hold interation numbers for questions asked/correctly answered
+    let questionsPerRound = allQuestions.count
+    var questionsAsked = 0
+    var correctQuestions = 0
+    var previouslyUsedNumbers: [Int] = [-1]
+    var indexOfSelectedQuestion = 0
+//end vars and lets
+
+    
+    func displayQuestion() {
+        
+        var shouldDisplayQuestion = false
+    
+        while shouldDisplayQuestion == false{
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: allQuestions.count)
+    
+    /////////////////////////////////////////////////////////
+            func thisNumberHasBeenUsed() -> Bool{
+                for previousNumber in previouslyUsedNumbers{
+                    if previousNumber == indexOfSelectedQuestion{
+                        return true
+                    }//if statement end
+                }//for loop end
+                return false
+            }//func end
+    /////////////////////////////////////////////////////////
+    
+            if thisNumberHasBeenUsed() == false{
+                previouslyUsedNumbers.append(indexOfSelectedQuestion)
+                let questionToDisplay = allQuestions[indexOfSelectedQuestion]
+                questionField.text = questionToDisplay.question
+                playAgainButton.isHidden = true
+                shouldDisplayQuestion = true
+            }//if thisNumebrHasBeenUSed end
+            
+        }//while shouldDisplayQuestion loop end
+        
+        shouldDisplayQuestion = false
+    }//func displayQuestion end
+    
+    
+//////////////////////////////////////////////////////////////////////////////////////////////
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     
     
 //Checking the answer-button against the answer to the question
@@ -139,9 +184,10 @@ func displayQuestion() {
         
         questionsAsked = 0
         correctQuestions = 0
+        previouslyUsedNumbers = [-1]
         nextRound()
     }
-//end palyAgain
+//end playAgain
     
 }
 //End View Controller

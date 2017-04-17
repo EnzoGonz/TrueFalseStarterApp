@@ -9,12 +9,7 @@
 
 import GameKit
 
-//vars and constants to hold interation numbers for questions asked/correctly answered
-let questionsPerRound = allQuestions.count
-var questionsAsked = 0
-var correctQuestions = 0
-var indexOfSelectedQuestion: Int = 0
-//end vars and lets
+
 
 
 //struct for questions
