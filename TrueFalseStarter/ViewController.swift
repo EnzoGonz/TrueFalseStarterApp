@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     //First usage of QuizSounds
-        loadGameStartSound()
+        loadGameSounds(soundName: "ShowMe", soundType: "wav")
         // Start game
-        playGameStartSound()
+        playGameSound()
         displayQuestion()
     }
 // end of view did load
@@ -85,6 +85,13 @@ class ViewController: UIViewController {
                 previouslyUsedNumbers.append(indexOfSelectedQuestion)
                 let questionToDisplay = allQuestions[indexOfSelectedQuestion]
                 questionField.text = questionToDisplay.question
+                
+                buttonOne.setTitle(questionToDisplay.answer1, for: UIControlState.normal)
+                buttonTwo.setTitle(questionToDisplay.answer2, for: UIControlState.normal)
+                buttonThree.setTitle(questionToDisplay.answer3, for: UIControlState.normal)
+                buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
+                
+                
                 playAgainButton.isHidden = true
                 shouldDisplayQuestion = true
             }//if thisNumebrHasBeenUSed end
@@ -105,20 +112,27 @@ class ViewController: UIViewController {
         questionsAsked += 1
         
         let selectedQuestionDict = allQuestions[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict.answer
+        let correctAnswer = selectedQuestionDict.correctAnswer
         
-        if (sender === buttonOne &&  correctAnswer == "Button One")
-            || (sender === buttonTwo && correctAnswer == "Button Two")
-            || (sender === buttonThree &&  correctAnswer == "Button Three")
-            || (sender === buttonFour &&  correctAnswer == "Button Four"){
+        if (sender === buttonOne &&  correctAnswer == selectedQuestionDict.answer1)
+            || (sender === buttonTwo && correctAnswer == selectedQuestionDict.answer2)
+            || (sender === buttonThree &&  correctAnswer == selectedQuestionDict.answer3)
+            || (sender === buttonFour &&  correctAnswer == selectedQuestionDict.answer4){
             correctQuestions += 1
+            
+            loadGameSounds(soundName: randomSounds(forAnswerIs: "Correct"), soundType: "wav")
+            playGameSound()
+    
             questionField.text = "Correct!"
             
             loadNextRoundWithDelay(seconds: 1)
             
         } else {
             
-            questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.answer)"
+            loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
+            playGameSound()
+            
+            questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
             loadNextRoundWithDelay(seconds: 2)
         }

@@ -9,17 +9,34 @@
 /* Begin PBXBuildFile section */
 		0BC318A31EA25B280048C4EA /* QuizSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC318A21EA25B280048C4EA /* QuizSounds.swift */; };
 		0BC318A51EA25B430048C4EA /* QuizQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC318A41EA25B430048C4EA /* QuizQuestions.swift */; };
+		0BC318A71EA473CE0048C4EA /* wubba.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318A61EA473CE0048C4EA /* wubba.wav */; };
+		0BC318A91EA475B70048C4EA /* ShowMe.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318A81EA475B70048C4EA /* ShowMe.wav */; };
+		0BC318B01EA475D70048C4EA /* And_that's_why_I_always_say.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AA1EA475D70048C4EA /* And_that's_why_I_always_say.wav */; };
+		0BC318B11EA475D70048C4EA /* Riggity.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AB1EA475D70048C4EA /* Riggity.wav */; };
+		0BC318B21EA475D70048C4EA /* oh_yeahh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AC1EA475D70048C4EA /* oh_yeahh.wav */; };
+		0BC318B31EA475D70048C4EA /* oh_man.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AD1EA475D70048C4EA /* oh_man.wav */; };
+		0BC318B41EA475D70048C4EA /* my_man.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AE1EA475D70048C4EA /* my_man.wav */; };
+		0BC318B51EA475D70048C4EA /* I_like_what_you_got.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */; };
+		0BE4F1601EA47EF400182C9A /* hey_ya_you_doing_ok_.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */; };
 		97093D3C1C913506001275BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3B1C913506001275BC /* AppDelegate.swift */; };
 		97093D3E1C913506001275BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3D1C913506001275BC /* ViewController.swift */; };
 		97093D411C913506001275BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D3F1C913506001275BC /* Main.storyboard */; };
 		97093D431C913506001275BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97093D421C913506001275BC /* Assets.xcassets */; };
 		97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D441C913506001275BC /* LaunchScreen.storyboard */; };
-		97093D531C932116001275BC /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 97093D521C932116001275BC /* GameSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BC318A21EA25B280048C4EA /* QuizSounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSounds.swift; sourceTree = "<group>"; };
 		0BC318A41EA25B430048C4EA /* QuizQuestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizQuestions.swift; sourceTree = "<group>"; };
+		0BC318A61EA473CE0048C4EA /* wubba.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wubba.wav; sourceTree = "<group>"; };
+		0BC318A81EA475B70048C4EA /* ShowMe.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShowMe.wav; sourceTree = "<group>"; };
+		0BC318AA1EA475D70048C4EA /* And_that's_why_I_always_say.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "And_that's_why_I_always_say.wav"; sourceTree = "<group>"; };
+		0BC318AB1EA475D70048C4EA /* Riggity.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Riggity.wav; sourceTree = "<group>"; };
+		0BC318AC1EA475D70048C4EA /* oh_yeahh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oh_yeahh.wav; sourceTree = "<group>"; };
+		0BC318AD1EA475D70048C4EA /* oh_man.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oh_man.wav; sourceTree = "<group>"; };
+		0BC318AE1EA475D70048C4EA /* my_man.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = my_man.wav; sourceTree = "<group>"; };
+		0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = I_like_what_you_got.wav; sourceTree = "<group>"; };
+		0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hey_ya_you_doing_ok_.wav; sourceTree = "<group>"; };
 		97093D381C913506001275BC /* TrueFalseStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrueFalseStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97093D3B1C913506001275BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97093D3D1C913506001275BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +44,6 @@
 		97093D421C913506001275BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97093D451C913506001275BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97093D471C913506001275BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97093D521C932116001275BC /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +84,15 @@
 				97093D421C913506001275BC /* Assets.xcassets */,
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
 				97093D471C913506001275BC /* Info.plist */,
-				97093D521C932116001275BC /* GameSound.wav */,
+				0BC318A81EA475B70048C4EA /* ShowMe.wav */,
+				0BC318A61EA473CE0048C4EA /* wubba.wav */,
+				0BC318AA1EA475D70048C4EA /* And_that's_why_I_always_say.wav */,
+				0BC318AB1EA475D70048C4EA /* Riggity.wav */,
+				0BC318AC1EA475D70048C4EA /* oh_yeahh.wav */,
+				0BC318AD1EA475D70048C4EA /* oh_man.wav */,
+				0BC318AE1EA475D70048C4EA /* my_man.wav */,
+				0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */,
+				0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -105,6 +129,7 @@
 				TargetAttributes = {
 					97093D371C913506001275BC = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4A7MZZ9ZRX;
 						LastSwiftMigration = 0810;
 					};
 				};
@@ -132,10 +157,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97093D531C932116001275BC /* GameSound.wav in Resources */,
+				0BC318B01EA475D70048C4EA /* And_that's_why_I_always_say.wav in Resources */,
+				0BC318B41EA475D70048C4EA /* my_man.wav in Resources */,
+				0BC318B31EA475D70048C4EA /* oh_man.wav in Resources */,
 				97093D461C913506001275BC /* LaunchScreen.storyboard in Resources */,
+				0BC318B21EA475D70048C4EA /* oh_yeahh.wav in Resources */,
 				97093D431C913506001275BC /* Assets.xcassets in Resources */,
+				0BC318A71EA473CE0048C4EA /* wubba.wav in Resources */,
+				0BC318B51EA475D70048C4EA /* I_like_what_you_got.wav in Resources */,
 				97093D411C913506001275BC /* Main.storyboard in Resources */,
+				0BC318B11EA475D70048C4EA /* Riggity.wav in Resources */,
+				0BC318A91EA475B70048C4EA /* ShowMe.wav in Resources */,
+				0BE4F1601EA47EF400182C9A /* hey_ya_you_doing_ok_.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +300,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4A7MZZ9ZRX;
 				INFOPLIST_FILE = TrueFalseStarter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.TrueFalseStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enzogonz.TrueFalseStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -279,9 +313,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4A7MZZ9ZRX;
 				INFOPLIST_FILE = TrueFalseStarter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.TrueFalseStarter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.enzogonz.TrueFalseStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
