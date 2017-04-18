@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,11 +19,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K17-uy-MvB">
-                                <rect key="frame" x="36" y="246" width="248" height="113"/>
+                                <rect key="frame" x="36" y="345" width="303" height="113"/>
                                 <color key="backgroundColor" red="0.53511404991149902" green="0.64949697256088257" blue="0.91505557298660278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="NYz-BI-xYk"/>
@@ -33,10 +33,11 @@
                                 <state key="normal" title="Play Again"/>
                                 <connections>
                                     <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="klz-B2-JAN"/>
+                                    <action selector="playAgainStartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hkb-og-fT7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtc-Mt-AYu">
-                                <rect key="frame" x="36" y="251" width="248" height="53"/>
+                                <rect key="frame" x="36" y="350" width="303" height="53"/>
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdz-92-ONK">
-                                <rect key="frame" x="36" y="312" width="248" height="53"/>
+                                <rect key="frame" x="36" y="411" width="303" height="53"/>
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-MS-ECi">
-                                <rect key="frame" x="36" y="373" width="248" height="53"/>
+                                <rect key="frame" x="36" y="472" width="303" height="53"/>
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,7 +67,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS4-HX-g9f">
-                                <rect key="frame" x="36" y="434" width="248" height="53"/>
+                                <rect key="frame" x="36" y="533" width="303" height="53"/>
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,7 +77,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-JQ-Pyv">
-                                <rect key="frame" x="36" y="495" width="248" height="53"/>
+                                <rect key="frame" x="36" y="594" width="303" height="53"/>
                                 <color key="backgroundColor" red="0.53511404991149902" green="0.64949697256088257" blue="0.91505557298660278" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="zh4-4f-UUu"/>
@@ -88,16 +89,18 @@
                                     <action selector="nextQuestionAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dh1-sr-tmg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="Sample Question" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
-                                <rect key="frame" x="23" y="38" width="275" height="200"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
+                                <rect key="frame" x="23" y="38" width="330" height="299"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HE-Qq-mmb">
-                                <rect key="frame" x="139" y="20" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HE-Qq-mmb">
+                                <rect key="frame" x="23" y="28" width="330" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="lLZ-hs-Hzy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
                                 <color key="textColor" red="0.99600285291671753" green="0.99619680643081665" blue="0.99162989854812622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -105,6 +108,7 @@
                         <color key="backgroundColor" red="0.57819485664367676" green="0.91822022199630737" blue="0.75862717628479004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="height" secondItem="J1V-MS-ECi" secondAttribute="height" id="06O-8y-9T4"/>
+                            <constraint firstItem="I3V-ih-1Ky" firstAttribute="trailing" secondItem="7HE-Qq-mmb" secondAttribute="trailing" id="2lj-kM-zPT"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3NZ-PS-diW"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="height" secondItem="AS4-HX-g9f" secondAttribute="height" id="59x-8B-ceO"/>
                             <constraint firstItem="rdz-92-ONK" firstAttribute="top" secondItem="gtc-Mt-AYu" secondAttribute="bottom" constant="8" id="6cj-tP-wrS"/>
@@ -115,6 +119,7 @@
                             <constraint firstItem="J1V-MS-ECi" firstAttribute="top" secondItem="rdz-92-ONK" secondAttribute="bottom" constant="8" id="KdJ-0A-GRL"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="height" secondItem="rdz-92-ONK" secondAttribute="height" id="Kh7-m3-gfg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="f2B-JQ-Pyv" secondAttribute="bottom" constant="20" id="L4L-WX-4Pb"/>
+                            <constraint firstItem="7HE-Qq-mmb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="SGN-rW-pyq"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="13" id="UwL-Mc-8jz"/>
                             <constraint firstItem="K17-uy-MvB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W7S-NA-4fx"/>
                             <constraint firstItem="AS4-HX-g9f" firstAttribute="top" secondItem="J1V-MS-ECi" secondAttribute="bottom" constant="8" id="W96-TH-lJL"/>
@@ -135,6 +140,8 @@
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="leading" secondItem="AS4-HX-g9f" secondAttribute="leading" id="xpl-hw-nvK"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="7" id="yXh-2E-Nzr"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="trailing" secondItem="rdz-92-ONK" secondAttribute="trailing" id="ysC-oc-UFi"/>
+                            <constraint firstItem="I3V-ih-1Ky" firstAttribute="leading" secondItem="7HE-Qq-mmb" secondAttribute="leading" id="yuY-z4-ecO"/>
+                            <constraint firstItem="I3V-ih-1Ky" firstAttribute="centerX" secondItem="7HE-Qq-mmb" secondAttribute="centerX" id="zJe-29-KVf"/>
                             <constraint firstItem="gtc-Mt-AYu" firstAttribute="trailing" secondItem="AS4-HX-g9f" secondAttribute="trailing" id="zn0-5s-cf3"/>
                         </constraints>
                     </view>
@@ -152,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20.625" y="34.859154929577464"/>
+            <point key="canvasLocation" x="20" y="34.632683658170919"/>
         </scene>
     </scenes>
 </document>

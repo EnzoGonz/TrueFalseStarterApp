@@ -30,31 +30,59 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    //First usage of QuizSounds
-        loadGameSounds(soundName: "ShowMe", soundType: "wav")
-        // Start game
-        playGameSound()
-        displayQuestion()
-    }
-// end of view did load
+        buttonOne.isHidden = true
+        buttonTwo.isHidden = true
+        buttonThree.isHidden = true
+        buttonFour.isHidden = true
+        nextQuestionButton.isHidden = true
+        
+        playAgainButton.setTitle("START QUIZ", for: UIControlState.normal)
+        playAgainButton.isHidden = false
+        
+    }// end of view did load
     
     
-//For memory not relating to project
+    //For memory not relating to project
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//end of didRecieveMemory
-   
+    //end of didRecieveMemory
+    
+    
+    
+/*
+--------------------------------------------------------------------------------------------------------------
+                        **********    Start Game Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
+    
+
+    @IBAction func playAgainStartGame(_ sender: UIButton) {
+        
+        loadGameSounds(soundName: "ShowMe", soundType: "wav")
+        playGameSound()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
+        
+        displayQuestion()
+        
+    }//end start game/play again button
+    
 
     
+
+/*
+--------------------------------------------------------------------------------------------------------------
+                                    **********    Display Question Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
     
     
     
     
-//////////////////////////////////////////////////////////////////////////////////////////////
     // Generatign a random number to use as the index of allQuestions - for random question to display. Also verifyign that the question has not been displayed before, and if it has generating a new random number
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
     
 
 //vars and constants to hold interation numbers for questions asked/correctly answered
@@ -67,6 +95,12 @@ class ViewController: UIViewController {
 
     
     func displayQuestion() {
+        
+        buttonOne.isHidden = false
+        buttonTwo.isHidden = false
+        buttonThree.isHidden = false
+        buttonFour.isHidden = false
+       
         
         buttonOne.isEnabled = true
         buttonTwo.isEnabled = true
@@ -117,14 +151,22 @@ class ViewController: UIViewController {
     }//func displayQuestion end
     
     
-//////////////////////////////////////////////////////////////////////////////////////////////
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/*
+--------------------------------------------------------------------------------------------------------------
+                                **********    Check Answer Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
     
     
 //Checking the answer-button against the answer to the question to determine if correct or incorrect
     @IBAction func checkAnswer(_ sender: UIButton) {
+        
+        
+        
         // Increment the questions asked counter
         questionsAsked += 1
+        
+        timer.invalidate()
         
         let selectedQuestionDict = allQuestions[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict.correctAnswer
@@ -139,6 +181,8 @@ class ViewController: UIViewController {
             //correct answer prompts a random correctAnswer sound to play
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Correct"), soundType: "wav")
             playGameSound()
+            
+            countdownTimer.text = "NICE!"
     
             questionField.text = "Correct!"
             
@@ -155,6 +199,8 @@ class ViewController: UIViewController {
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
             playGameSound()
             
+            countdownTimer.text = "BUMMER!"
+            
             questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
             buttonOne.isEnabled = false
@@ -168,15 +214,27 @@ class ViewController: UIViewController {
         
         
     }//End of checkAnswer
+  
+    
+/*
+--------------------------------------------------------------------------------------------------------------
+                                **********    Next Round Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
+    
+    
     
     
 //function to determine if the game is over and if so to start a new game
     func nextRound() {
         if questionsAsked == questionsPerRound {
+            time = 15
             // Game is over
             displayScore()
+            
         } else {
             // Continue game
+            time = 15
             displayQuestion()
         }
     }
@@ -184,12 +242,71 @@ class ViewController: UIViewController {
     
     
     
+    
+    
+/*
+--------------------------------------------------------------------------------------------------------------
+                                **********    Timer / Next Question Section  *********
+--------------------------------------------------------------------------------------------------------------
+*/
+    
+    
+    
+    var time = 15//Hard number used for lightning round time available - 15 seconds
+    var timer = Timer()
+
+//function called when the timer runs
+    func runTimer(){
+        if time > 5 {
+            countdownTimer.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            countdownTimer.text = "\(time)"
+            time -= 1
+        } else if ((time <= 5) && (time != 0)){
+            countdownTimer.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            countdownTimer.text = "\(time)"
+            time -= 1
+        } else if time == 0 {
+            
+            questionsAsked += 1
+            
+            timer.invalidate()
+            
+            
+            
+            loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
+            playGameSound()
+                
+            questionField.text = "You ran out of time!"
+                
+            countdownTimer.text = "BUMMER!"
+                
+            buttonOne.isEnabled = false
+            buttonTwo.isEnabled = false
+            buttonThree.isEnabled = false
+            buttonFour.isEnabled = false
+                
+            nextQuestionButton.isHidden = false
+                
+            
+        }
+    }//end runTimer func
+    
+    
 //nextQuestionButton is tapped to proceed to the next question
     @IBAction func nextQuestionAction(_ sender: UIButton) {
+        countdownTimer.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
         nextRound()
+        
     }//end button func
     
+ 
     
+/*
+--------------------------------------------------------------------------------------------------------------
+                                **********   Display Score Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
     
     
     
@@ -213,6 +330,14 @@ class ViewController: UIViewController {
     }//end of displayScore
     
     
+    
+/*
+--------------------------------------------------------------------------------------------------------------
+                                    **********    Play Again Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
+    
+    
 //When the 'Play Again' button is displayed and tapped the answer buttons reappear and the questionsAsked and correctQuestions variables are reset to 0
 @IBAction func playAgain() {
         // Show the answer buttons
@@ -229,5 +354,4 @@ class ViewController: UIViewController {
     }
 //end playAgain
     
-}
-//End View Controller
+}//End View Controller
