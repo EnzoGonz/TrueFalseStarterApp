@@ -26,17 +26,20 @@ class ViewController: UIViewController {
 //End of outlets
 
     
+/*
+--------------------------------------------------------------------------------------------------------------
+                            **********    Start Game Section    *********
+--------------------------------------------------------------------------------------------------------------
+*/
+    
+    
 //To determine what code runs as the view loads- the first dispaly
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buttonOne.isHidden = true
-        buttonTwo.isHidden = true
-        buttonThree.isHidden = true
-        buttonFour.isHidden = true
-        nextQuestionButton.isHidden = true
-        
-        countdownTimer.isHidden = true
+        hideAnswerButtons()
+        hideNextQuestionButton()
+        hideCountdownTimerLabel()
         
         playAgainButton.setTitle("START QUIZ", for: UIControlState.normal)
         
@@ -53,27 +56,64 @@ class ViewController: UIViewController {
     //end of didRecieveMemory
     
     
-    
 /*
 --------------------------------------------------------------------------------------------------------------
-                        **********    Start Game Section    *********
+                            **********    Enableing/Hiding Buttons Section    *********
 --------------------------------------------------------------------------------------------------------------
 */
     
-
-   /* @IBAction func playAgainStartGame(_ sender: UIButton) {
-        
-        loadGameSounds(soundName: "ShowMe", soundType: "wav")
-        playGameSound()
-        
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
-        
-        displayQuestion()
-        
-    }//end start game/play again button
-    */
-
+    func disableAnswerButtons(){
+        buttonOne.isEnabled = false
+        buttonTwo.isEnabled = false
+        buttonThree.isEnabled = false
+        buttonFour.isEnabled = false
+    }
     
+    func enableAnswerButtons(){
+        buttonOne.isEnabled = true
+        buttonTwo.isEnabled = true
+        buttonThree.isEnabled = true
+        buttonFour.isEnabled = true
+    }
+    
+    func hideAnswerButtons(){
+        buttonOne.isHidden = true
+        buttonTwo.isHidden = true
+        buttonThree.isHidden = true
+        buttonFour.isHidden = true
+    }
+    
+    func revealAnswerButtons(){
+        buttonOne.isHidden = false
+        buttonTwo.isHidden = false
+        buttonThree.isHidden = false
+        buttonFour.isHidden = false
+    }
+    
+    func hideNextQuestionButton(){
+        nextQuestionButton.isHidden = true
+    }
+    
+    func revealNextQuestionButton(){
+        nextQuestionButton.isHidden = false
+    }
+    
+    func hideCountdownTimerLabel(){
+        countdownTimer.isHidden = true
+    }
+    
+    func revealCoutndownTImerLabel(){
+        countdownTimer.isHidden = false
+    }
+    
+    func hidePlayAgainButton(){
+        playAgainButton.isHidden = true
+    }
+    
+    func revealPlayAgainButton(){
+        playAgainButton.isHidden = false
+    }
+
 
 /*
 --------------------------------------------------------------------------------------------------------------
@@ -101,24 +141,15 @@ class ViewController: UIViewController {
         
         
         
-        buttonOne.isHidden = false
-        buttonTwo.isHidden = false
-        buttonThree.isHidden = false
-        buttonFour.isHidden = false
-        
-        
-       
-        
-        buttonOne.isEnabled = true
-        buttonTwo.isEnabled = true
-        buttonThree.isEnabled = true
-        buttonFour.isEnabled = true
+        revealAnswerButtons()
+        enableAnswerButtons()
         
         if questionsAsked != (questionsPerRound - 1) {
             nextQuestionButton.setTitle("NEXT QUESTION", for: UIControlState.normal)
         } else { nextQuestionButton.setTitle("VIEW SCORE", for: UIControlState.normal)
         }//end if statement
-        nextQuestionButton.isHidden = true
+        
+        hideNextQuestionButton()
         
         var shouldDisplayQuestion = false
     
@@ -147,8 +178,9 @@ class ViewController: UIViewController {
                 buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
                 
                 
-                nextQuestionButton.isHidden = true
-                playAgainButton.isHidden = true
+                hideNextQuestionButton()
+                hidePlayAgainButton()
+                
                 shouldDisplayQuestion = true
             }//if thisNumebrHasBeenUSed end
             
@@ -189,16 +221,13 @@ class ViewController: UIViewController {
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Correct"), soundType: "wav")
             playGameSound()
             
-            countdownTimer.isHidden = true
+            hideCountdownTimerLabel()
     
             questionField.text = "Correct!"
             
-            buttonOne.isEnabled = false
-            buttonTwo.isEnabled = false
-            buttonThree.isEnabled = false
-            buttonFour.isEnabled = false
+            disableAnswerButtons()
 
-            nextQuestionButton.isHidden = false
+            revealNextQuestionButton()
             
         } else {//if incorrect then
             
@@ -206,16 +235,13 @@ class ViewController: UIViewController {
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
             playGameSound()
             
-            countdownTimer.isHidden = true
+            hideCountdownTimerLabel()
             
             questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
-            buttonOne.isEnabled = false
-            buttonTwo.isEnabled = false
-            buttonThree.isEnabled = false
-            buttonFour.isEnabled = false
+            disableAnswerButtons()
             
-            nextQuestionButton.isHidden = false
+            revealNextQuestionButton()
             
         }//end if sender === statement
         
@@ -236,13 +262,15 @@ class ViewController: UIViewController {
     func nextRound() {
         
         countdownTimer.text = "15"
-        countdownTimer.isHidden = false
+        revealCoutndownTImerLabel()
         
         
         if questionsAsked == questionsPerRound {
             time = 14
             // Game is over
-            countdownTimer.isHidden = true
+            
+            hideCountdownTimerLabel()
+            
             timer.invalidate()
             playAgainButton.setTitle("PLAY AGAIN", for: UIControlState.normal)
             
@@ -261,7 +289,7 @@ class ViewController: UIViewController {
     
 /*
 --------------------------------------------------------------------------------------------------------------
-                                **********    Timer / Next Question Section  *********
+                                **********    Timer Section  *********
 --------------------------------------------------------------------------------------------------------------
 */
     
@@ -295,26 +323,31 @@ class ViewController: UIViewController {
                 
             countdownTimer.text = "BUMMER!"
                 
-            buttonOne.isEnabled = false
-            buttonTwo.isEnabled = false
-            buttonThree.isEnabled = false
-            buttonFour.isEnabled = false
+            disableAnswerButtons()
                 
-            nextQuestionButton.isHidden = false
-                
+            revealNextQuestionButton()
             
-        }
+        }//end if time
     }//end runTimer func
     
     
+    func toRunTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
+    }//end toRunTimer section
     
     
+    
+/*
+--------------------------------------------------------------------------------------------------------------
+                            **********    Timer / Next Question Section  *********
+--------------------------------------------------------------------------------------------------------------
+*/
     
     
 //nextQuestionButton is tapped to proceed to the next question
     @IBAction func nextQuestionAction(_ sender: UIButton) {
         countdownTimer.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
+        toRunTimer()
         nextRound()
         
     }//end button func
@@ -332,16 +365,14 @@ class ViewController: UIViewController {
 //When the score is displayed the buttons should be hidden
     func displayScore() {
         // Hide the answer buttons
-        buttonOne.isHidden = true
-        buttonTwo.isHidden = true
-        buttonThree.isHidden = true
-        buttonFour.isHidden = true
-        nextQuestionButton.isHidden = true
+        hideAnswerButtons()
+        
+        hideNextQuestionButton()
         
         // Display play again button
-        playAgainButton.isHidden = false
+        revealPlayAgainButton()
         
-        if Double(correctQuestions) >= (Double(questionsPerRound) * 0.7){
+        if Double(correctQuestions) >= (Double(questionsPerRound) * 0.7/*hard numebr used to gauge score*/){
             questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
         } else {
             questionField.text = "Too Bad!\nYou only got \(correctQuestions) out of \(questionsPerRound) correct.\nBetter Luck Next Time!"
@@ -364,17 +395,14 @@ class ViewController: UIViewController {
         playGameSound()
     
         // Show the answer buttons
-        buttonOne.isHidden = false
-        buttonTwo.isHidden = false
-        buttonThree.isHidden = false
-        buttonFour.isHidden = false
-        nextQuestionButton.isHidden = true
+        revealAnswerButtons()
+        hideNextQuestionButton()
         
         questionsAsked = 0
         correctQuestions = 0
         previouslyUsedNumbers = [-1]
     
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
+        toRunTimer()
     
         nextRound()
     }
