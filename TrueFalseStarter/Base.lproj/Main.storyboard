@@ -40,7 +40,6 @@
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button One"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Bi-Wp-ZF2"/>
                                 </connections>
@@ -50,7 +49,6 @@
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button Two"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K68-LW-lYO"/>
                                 </connections>
@@ -60,7 +58,6 @@
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button Three"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B0c-BF-DRn"/>
                                 </connections>
@@ -70,7 +67,6 @@
                                 <color key="backgroundColor" red="0.91834330558776855" green="0.64634972810745239" blue="0.56018167734146118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="19"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button Four"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fTq-KT-Jen"/>
                                 </connections>

@@ -167,22 +167,44 @@ class ViewController: UIViewController {
             }//func end
     /////////////////////////////////////////////////////////
     
-            if thisNumberHasBeenUsed() == false {
+           if thisNumberHasBeenUsed() == false && (allQuestions[indexOfSelectedQuestion].numberOfQuestions == 4){
+                
                 previouslyUsedNumbers.append(indexOfSelectedQuestion)
                 let questionToDisplay = allQuestions[indexOfSelectedQuestion]
                 questionField.text = questionToDisplay.question
+            
+                buttonFour.isEnabled = true
                 
                 buttonOne.setTitle(questionToDisplay.answer1, for: UIControlState.normal)
                 buttonTwo.setTitle(questionToDisplay.answer2, for: UIControlState.normal)
                 buttonThree.setTitle(questionToDisplay.answer3, for: UIControlState.normal)
                 buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
                 
-                
                 hideNextQuestionButton()
                 hidePlayAgainButton()
                 
                 shouldDisplayQuestion = true
-            }//if thisNumebrHasBeenUSed end
+            
+            } else if thisNumberHasBeenUsed() == false && (allQuestions[indexOfSelectedQuestion].numberOfQuestions == 3){
+                
+                previouslyUsedNumbers.append(indexOfSelectedQuestion)
+                let questionToDisplay = allQuestions[indexOfSelectedQuestion]
+                questionField.text = questionToDisplay.question
+            
+                buttonOne.setTitle(questionToDisplay.answer1, for: UIControlState.normal)
+                buttonTwo.setTitle(questionToDisplay.answer2, for: UIControlState.normal)
+                buttonThree.setTitle(questionToDisplay.answer3, for: UIControlState.normal)
+                buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
+            
+                buttonFour.backgroundColor = #colorLiteral(red: 0.9183433056, green: 0.6463497281, blue: 0.5601816773, alpha: 0.7463880565)
+                buttonFour.isEnabled = false
+            
+                hideNextQuestionButton()
+                hidePlayAgainButton()
+                
+                shouldDisplayQuestion = true
+                
+            } //if thisNumebrHasBeenUSed end
             
         }//while shouldDisplayQuestion loop end
         
