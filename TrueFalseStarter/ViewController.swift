@@ -36,8 +36,11 @@ class ViewController: UIViewController {
         buttonFour.isHidden = true
         nextQuestionButton.isHidden = true
         
+        countdownTimer.isHidden = true
+        
         playAgainButton.setTitle("START QUIZ", for: UIControlState.normal)
-        playAgainButton.isHidden = false
+        
+        
         
     }// end of view did load
     
@@ -58,7 +61,7 @@ class ViewController: UIViewController {
 */
     
 
-    @IBAction func playAgainStartGame(_ sender: UIButton) {
+   /* @IBAction func playAgainStartGame(_ sender: UIButton) {
         
         loadGameSounds(soundName: "ShowMe", soundType: "wav")
         playGameSound()
@@ -68,7 +71,7 @@ class ViewController: UIViewController {
         displayQuestion()
         
     }//end start game/play again button
-    
+    */
 
     
 
@@ -96,10 +99,14 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         
+        
+        
         buttonOne.isHidden = false
         buttonTwo.isHidden = false
         buttonThree.isHidden = false
         buttonFour.isHidden = false
+        
+        
        
         
         buttonOne.isEnabled = true
@@ -129,7 +136,7 @@ class ViewController: UIViewController {
             }//func end
     /////////////////////////////////////////////////////////
     
-            if thisNumberHasBeenUsed() == false{
+            if thisNumberHasBeenUsed() == false {
                 previouslyUsedNumbers.append(indexOfSelectedQuestion)
                 let questionToDisplay = allQuestions[indexOfSelectedQuestion]
                 questionField.text = questionToDisplay.question
@@ -182,7 +189,7 @@ class ViewController: UIViewController {
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Correct"), soundType: "wav")
             playGameSound()
             
-            countdownTimer.text = "NICE!"
+            countdownTimer.isHidden = true
     
             questionField.text = "Correct!"
             
@@ -199,7 +206,7 @@ class ViewController: UIViewController {
             loadGameSounds(soundName: randomSounds(forAnswerIs: "Incorrect"), soundType: "wav")
             playGameSound()
             
-            countdownTimer.text = "BUMMER!"
+            countdownTimer.isHidden = true
             
             questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
@@ -213,7 +220,7 @@ class ViewController: UIViewController {
         }//end if sender === statement
         
         
-    }//End of checkAnswer
+    }//End of checkAnswer func
   
     
 /*
@@ -227,18 +234,26 @@ class ViewController: UIViewController {
     
 //function to determine if the game is over and if so to start a new game
     func nextRound() {
+        
+        countdownTimer.text = "15"
+        countdownTimer.isHidden = false
+        
+        
         if questionsAsked == questionsPerRound {
-            time = 15
+            time = 14
             // Game is over
+            countdownTimer.isHidden = true
+            timer.invalidate()
+            playAgainButton.setTitle("PLAY AGAIN", for: UIControlState.normal)
+            
             displayScore()
             
         } else {
             // Continue game
-            time = 15
+            time = 14
             displayQuestion()
         }
-    }
-//end nextRound
+    }//end nextRound func
     
     
     
@@ -252,7 +267,7 @@ class ViewController: UIViewController {
     
     
     
-    var time = 15//Hard number used for lightning round time available - 15 seconds
+    var time = 14//Hard number used for lightning round time available - 15 seconds
     var timer = Timer()
 
 //function called when the timer runs
@@ -290,6 +305,10 @@ class ViewController: UIViewController {
             
         }
     }//end runTimer func
+    
+    
+    
+    
     
     
 //nextQuestionButton is tapped to proceed to the next question
@@ -340,6 +359,10 @@ class ViewController: UIViewController {
     
 //When the 'Play Again' button is displayed and tapped the answer buttons reappear and the questionsAsked and correctQuestions variables are reset to 0
 @IBAction func playAgain() {
+    
+        loadGameSounds(soundName: "ShowMe", soundType: "wav")
+        playGameSound()
+    
         // Show the answer buttons
         buttonOne.isHidden = false
         buttonTwo.isHidden = false
@@ -350,6 +373,9 @@ class ViewController: UIViewController {
         questionsAsked = 0
         correctQuestions = 0
         previouslyUsedNumbers = [-1]
+    
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.runTimer), userInfo: nil, repeats: true)
+    
         nextRound()
     }
 //end playAgain
