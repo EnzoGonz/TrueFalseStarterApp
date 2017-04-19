@@ -18,6 +18,7 @@
 		0BC318B41EA475D70048C4EA /* my_man.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AE1EA475D70048C4EA /* my_man.wav */; };
 		0BC318B51EA475D70048C4EA /* I_like_what_you_got.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */; };
 		0BE4F1601EA47EF400182C9A /* hey_ya_you_doing_ok_.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */; };
+		0BE4F1821EA7A2FA00182C9A /* newButtonFour.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BE4F1811EA7A2FA00182C9A /* newButtonFour.jpg */; };
 		97093D3C1C913506001275BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3B1C913506001275BC /* AppDelegate.swift */; };
 		97093D3E1C913506001275BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97093D3D1C913506001275BC /* ViewController.swift */; };
 		97093D411C913506001275BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97093D3F1C913506001275BC /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		0BC318AE1EA475D70048C4EA /* my_man.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = my_man.wav; sourceTree = "<group>"; };
 		0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = I_like_what_you_got.wav; sourceTree = "<group>"; };
 		0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hey_ya_you_doing_ok_.wav; sourceTree = "<group>"; };
+		0BE4F1811EA7A2FA00182C9A /* newButtonFour.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = newButtonFour.jpg; sourceTree = "<group>"; };
 		97093D381C913506001275BC /* TrueFalseStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrueFalseStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97093D3B1C913506001275BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97093D3D1C913506001275BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				0BC318AE1EA475D70048C4EA /* my_man.wav */,
 				0BC318AF1EA475D70048C4EA /* I_like_what_you_got.wav */,
 				0BE4F15F1EA47EF400182C9A /* hey_ya_you_doing_ok_.wav */,
+				0BE4F1811EA7A2FA00182C9A /* newButtonFour.jpg */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				0BC318B51EA475D70048C4EA /* I_like_what_you_got.wav in Resources */,
 				97093D411C913506001275BC /* Main.storyboard in Resources */,
 				0BC318B11EA475D70048C4EA /* Riggity.wav in Resources */,
+				0BE4F1821EA7A2FA00182C9A /* newButtonFour.jpg in Resources */,
 				0BC318A91EA475B70048C4EA /* ShowMe.wav in Resources */,
 				0BE4F1601EA47EF400182C9A /* hey_ya_you_doing_ok_.wav in Resources */,
 			);

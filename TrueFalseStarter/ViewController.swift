@@ -168,18 +168,21 @@ class ViewController: UIViewController {
     /////////////////////////////////////////////////////////
     
            if thisNumberHasBeenUsed() == false && (allQuestions[indexOfSelectedQuestion].numberOfQuestions == 4){
+            
+                buttonFour.setBackgroundImage(nil, for: UIControlState.disabled)
                 
                 previouslyUsedNumbers.append(indexOfSelectedQuestion)
                 let questionToDisplay = allQuestions[indexOfSelectedQuestion]
                 questionField.text = questionToDisplay.question
             
-                buttonFour.isEnabled = true
-                
+            
+            
                 buttonOne.setTitle(questionToDisplay.answer1, for: UIControlState.normal)
                 buttonTwo.setTitle(questionToDisplay.answer2, for: UIControlState.normal)
                 buttonThree.setTitle(questionToDisplay.answer3, for: UIControlState.normal)
                 buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
-                
+            
+            
                 hideNextQuestionButton()
                 hidePlayAgainButton()
                 
@@ -196,7 +199,8 @@ class ViewController: UIViewController {
                 buttonThree.setTitle(questionToDisplay.answer3, for: UIControlState.normal)
                 buttonFour.setTitle(questionToDisplay.answer4, for: UIControlState.normal)
             
-                buttonFour.backgroundColor = #colorLiteral(red: 0.9183433056, green: 0.6463497281, blue: 0.5601816773, alpha: 0.7463880565)
+            
+                buttonFour.setBackgroundImage(#imageLiteral(resourceName: "newButtonFour.jpg"), for: UIControlState.disabled)
                 buttonFour.isEnabled = false
             
                 hideNextQuestionButton()
@@ -247,7 +251,9 @@ class ViewController: UIViewController {
     
             questionField.text = "Correct!"
             
+            
             disableAnswerButtons()
+            
 
             revealNextQuestionButton()
             
@@ -262,6 +268,7 @@ class ViewController: UIViewController {
             questionField.text = "Sorry, wrong answer! The correct answer was \(selectedQuestionDict.correctAnswer)"
             
             disableAnswerButtons()
+            
             
             revealNextQuestionButton()
             
@@ -294,7 +301,7 @@ class ViewController: UIViewController {
             hideCountdownTimerLabel()
             
             timer.invalidate()
-            playAgainButton.setTitle("PLAY AGAIN", for: UIControlState.normal)
+            
             
             displayScore()
             
@@ -427,6 +434,7 @@ class ViewController: UIViewController {
         toRunTimer()
     
         nextRound()
+        playAgainButton.setTitle("PLAY AGAIN", for: UIControlState.normal)
     }
 //end playAgain
     
